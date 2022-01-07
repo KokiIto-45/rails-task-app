@@ -11,6 +11,9 @@ body {
   .header {
     background: #026aa7;
     padding: 10px;
+    .Toggle{
+      display: none;
+    }
     .nav {
       .header_menu {
         display: flex;
@@ -52,6 +55,71 @@ body {
       }
     }
   }
+@media screen and (max-width: 600px) {
+  .body{
+    overflow-x: hidden;
+  }
+  .header {
+    .Toggle{
+      display: inline;
+      position: fixed;    /* bodyに対しての絶対位置指定 */
+      width: 42px;
+      height: 42px;
+      cursor: pointer;
+      z-index: 3;
+      right:15px;
+      &.active{
+        span{
+          &:nth-child(1){
+            top: 18px;
+            /* 1番目のspanをマイナス45度に */
+            -webkit-transform: rotate(-45deg);
+            -moz-transform: rotate(-45deg);
+            transform: rotate(-45deg);
+          }
+          &:nth-child(2),&:nth-child(3){
+            top: 18px;
+            -webkit-transform: rotate(45deg);
+            -moz-transform: rotate(45deg);
+            transform: rotate(45deg);
+          }
+        }
+      }
+      span{
+        display: block;
+        position: absolute;
+        width: 50px;
+        border-bottom: solid 4px #333;
+        -webkit-transition: .35s ease-in-out;	/*変化の速度を指定*/
+        -moz-transition: .35s ease-in-out;		/*変化の速度を指定*/
+        transition: .35s ease-in-out;
+        &:nth-child(1){
+          top:5px;
+        }
+        &:nth-child(2){
+          top:18px;
+        }
+        &:nth-child(3){
+          top:32px;
+        }
+      }
+    }
+    .nav {
+      .header_menu {
+        &_inner{
+          text-align:center;
+          background-color:rgba(255,255,255,0.5);
+          transition: 0.5s ease;/*滑らかに表示*/
+          -webkit-transform: translateX(100%);
+          &.open{
+            -webkit-transform: translateX(0%);
+            transform: translateX(0%);
+          }
+        }
+      }
+    }
+  }
+}
   
   .submitBtn {
     background: #29b744;
