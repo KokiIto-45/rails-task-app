@@ -13,7 +13,7 @@ class User < ApplicationRecord
   private
 
   def add_default_list
-    List.create(title: 'デフォルト', user_id: self.id)
+    List.create(title: 'inbox', user_id: self.id)
   end
 
 end
